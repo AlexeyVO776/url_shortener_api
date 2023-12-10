@@ -1,24 +1,51 @@
-# README
+# URL Shortener API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Описание
+Это API для сокращения ссылок, разработанное с использованием Ruby on Rails. Оно позволяет пользователям сокращать длинные URL-адреса для удобного использования и предоставляет статистику по количеству переходов по каждой сокращенной ссылке.
 
-Things you may want to cover:
+## Технологии
+- Ruby on Rails
+- PostgreSQL
+- RSpec для тестирования
 
-* Ruby version
+## Установка
 
-* System dependencies
+### Предварительные требования
+- Ruby (версия 3.0.4)
+- Rails (версия 6.0 или выше)
+- PostgreSQL
 
-* Configuration
+### Шаги для запуска
+1. Клонируйте репозиторий:
 
-* Database creation
+```git clone https://github.com/AlexeyVO776/url_shortener_api.git```
 
-* Database initialization
+3. Установите зависимости:
 
-* How to run the test suite
+```bundle install```
 
-* Services (job queues, cache servers, search engines, etc.)
+5. Создайте и настройте базу данных:
 
-* Deployment instructions
+```rails db:create```<br>
+```rails db:migrate```
 
-* ...
+## Использование
+Для создания новой сокращенной ссылки отправьте POST-запрос на /api/urls с параметром original_url
+
+Пример запроса:
+
+```curl -X POST -H "Content-Type: application/json" -d '{"original_url": "http://example.com"}' http://localhost:3000/api/urls```
+
+Для перехода по сокращенной ссылке используйте эндпоинт:
+
+```GET /api/urls/:short_url``` - возвращает JSON с информацией о сокращенной ссылке.
+
+Для просмотра статистики используйте эндпоинт:
+
+```GET /api/urls/:short_url/stats``` - получение статистики переходов.
+
+## Тестирование
+
+Чтобы запустить тесты, выполните:
+
+```rspec```
