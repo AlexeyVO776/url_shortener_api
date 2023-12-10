@@ -30,19 +30,19 @@
 ```rails db:migrate```
 
 ## Использование
-Для создания новой сокращенной ссылки отправьте POST-запрос на `/urls` с параметром `original_url`.
+Для создания новой сокращенной ссылки отправьте POST-запрос на /api/urls с параметром original_url
 
 Пример запроса:
 
-```curl -X POST -H "Content-Type: application/json" -d '{"original_url": "http://example.com"}' http://localhost:3000/urls```
+```curl -X POST -H "Content-Type: application/json" -d '{"original_url": "http://example.com"}' http://localhost:3000/api/urls```
 
 Для перехода по сокращенной ссылке используйте эндпоинт:
 
-```GET /urls/:short_url``` - перенаправление на оригинальный URL.
+```GET /api/urls/:short_url``` - возвращает JSON с информацией о сокращенной ссылке.
 
 Для просмотра статистики используйте эндпоинт:
     
-```GET /urls/:short_url/stats``` - получение статистики переходов.
+```GET /api/urls/:short_url/stats``` - получение статистики переходов.
 
 ## Тестирование
 
